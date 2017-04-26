@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name"></string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="Planets">
+        <item>Sun Transferred pkr: 104 today</item>
+        <item>Mercury Transferred pkr: 200 today</item>
+        <item>Uranus Took pkr: 200 today</item>
+        <item>Neptune Took pkr: 100 today</item>
+        <item>Venus Transferred pkr: 639 today</item>
+        <item>Earth Transferred pkr: 200 Yesterday</item>
+        <item>Mars Transferred pkr: 945 yesterday</item>
+        <item>Jupiter Took pkr: 200 Yesterday</item>
+        <item>Saturn Took pkr: 400 Yesterday</item>
+        <item>Sun Transferred pkr: 104 today</item>
+        <item>Mercury Transferred pkr: 200 today</item>
+        <item>Uranus Took pkr: 200 today</item>
+        <item>Neptune Took pkr: 100 today</item>
+        <item>Venus Transferred pkr: 639 today</item>
+        <item>Earth Transferred pkr: 200 Yesterday</item>
+        <item>Mars Transferred pkr: 945 yesterday</item>
+        <item>Jupiter Took pkr: 200 Yesterday</item>
+        <item>Saturn Took pkr: 400 Yesterday</item>
+
+    </string-array>
+
+
+</resources>

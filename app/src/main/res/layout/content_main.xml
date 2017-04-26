@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_main"
+    tools:context="com.example.root.meeransunday.MainActivity"
+    android:background="#f5f5dc">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="               My Account Balance"
+            android:textColor="#0D47A1"
+            android:id="@+id/textView6"
+            android:layout_gravity="center"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PKR 1527.87"
+            android:drawableLeft="@mipmap/money"
+            android:textSize="30sp"
+            android:id="@+id/textView2"
+            android:layout_gravity="center"
+            android:layout_below="@+id/textView6"
+            />
+
+    </RelativeLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_alignParentBottom="true"
+        >
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:text="QR Code"
+        android:drawableLeft="@mipmap/qr"
+        android:onClick="scan"
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+               />
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:text="Send Mobile"
+            android:drawableLeft="@mipmap/sms"
+            android:onClick="message"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="1"
+            />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

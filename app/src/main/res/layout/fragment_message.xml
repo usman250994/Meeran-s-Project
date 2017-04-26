@@ -1,0 +1,49 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context="layout.message"
+
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:drawableLeft="@mipmap/phone"
+        android:ems="15"
+        android:id="@+id/editText"
+        android:hint="Mobile Number"
+
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:drawableLeft="@mipmap/amount"
+        android:id="@+id/editText2"
+        android:ems="15"
+        android:layout_below="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:hint="Amount to Pay"/>
+
+    <Button
+        android:text="Pay Now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:drawableLeft="@mipmap/send"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/editText2"
+        />
+
+    </RelativeLayout>
+</FrameLayout>
