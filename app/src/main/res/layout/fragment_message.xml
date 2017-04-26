@@ -5,7 +5,9 @@
     tools:context="layout.message"
 
     android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true">
+    android:layout_centerVertical="true"
+
+    >
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -18,8 +20,11 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:drawableLeft="@mipmap/phone"
-        android:ems="15"
+        android:ems="12"
         android:id="@+id/editText"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Mobile Number"
 
         android:layout_centerHorizontal="true"/>
@@ -30,10 +35,13 @@
         android:inputType="numberDecimal"
         android:drawableLeft="@mipmap/amount"
         android:id="@+id/editText2"
-        android:ems="15"
-        android:layout_below="@+id/editText"
+        android:ems="12"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_centerHorizontal="true"
-        android:hint="Amount to Pay"/>
+        android:hint="Amount to Pay"
+        />
 
     <Button
         android:text="Pay Now"
@@ -43,6 +51,7 @@
         android:drawableLeft="@mipmap/send"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/editText2"
+        android:layout_marginTop="50dp"
         />
 
     </RelativeLayout>
