@@ -1,6 +1,7 @@
 package layout;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,21 +16,31 @@ import android.provider.MediaStore;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.root.meeransunday.R;
+import com.google.zxing.Result;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 
-public class scan extends Fragment {
+import github.nisrulz.qreader.QRDataListener;
+import github.nisrulz.qreader.QREader;
+import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
+import static android.support.design.R.id.text;
 
+public class scan extends Fragment implements ZXingScannerView.ResultHandler{
+private ZXingScannerView zXingScannerView;
+    private SurfaceView mySurfaceView;
+    private QREader qrEader;
     private Camera mCamera;
     private CameraPreview mPreview;
     // TODO: Rename parameter arguments, choose names that match
@@ -45,7 +56,24 @@ public class scan extends Fragment {
 
     public scan() {
     }
+    @Override
+    public void handleResult(Result rawResult) {
+        // Do something with the result here
 
+        Log.e("handler", rawResult.getText()); // Prints scan results
+        Log.e("handler", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode)
+
+        // show the scanner result into dialog box.
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
+        builder.setTitle("Scan Result");
+        builder.setMessage(rawResult.getText());
+        AlertDialog alert1 = builder.create();
+        alert1.show();
+
+
+        // If you would like to resume scanning, call this method below:
+        zXingScannerView.resumeCameraPreview(this);
+    }
 
     // TODO: Rename and change types and number of parameters
     public static scan newInstance(String param1, String param2) {
@@ -64,7 +92,6 @@ public class scan extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
@@ -72,29 +99,52 @@ public class scan extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_scan, container, false);
 
-        if(checkCameraHardware(getActivity().getApplicationContext())){
+   if(checkCameraHardware(getActivity().getApplicationContext())){
+        zXingScannerView  = new ZXingScannerView(this.getActivity().getApplicationContext());
+       zXingScannerView.setResultHandler(this);
+        zXingScannerView.startCamera();
 
-            mCamera = Camera.open();
-            mCamera.setDisplayOrientation(90);
-            Camera.Parameters params = mCamera.getParameters();
-//*EDIT*//params.setFocusMode("continuous-picture");
-//It is better to use defined constraints as opposed to String, thanks to AbdelHady
-           // params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
-            mCamera.setParameters(params);
-            mPreview = new CameraPreview(this.getActivity(), mCamera);
+        FrameLayout preview =(FrameLayout)view.findViewById(R.id.camera_preview);
+        preview.addView(zXingScannerView);
+
+    }
+
+//   mCamera = Camera.open();
+//            mCamera.setDisplayOrientation(90);
+//            Camera.Parameters params = mCamera.getParameters();
+//           params.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE);
+//            mCamera.setParameters(params);
+//            mPreview = new CameraPreview(this.getActivity(), mCamera);
+//
+//
+//            FrameLayout preview =(FrameLayout)view.findViewById(R.id.camera_preview);
+//            preview.addView(mPreview);
+//
 
 
-            //container.addView(mPreview);--->Remove this line
-            //Add this line
-
-            FrameLayout preview =(FrameLayout)view.findViewById(R.id.camera_preview);
-            preview.addView(mPreview);
-        }
         // Inflate the layout for this fragment
+        //**magesh**//
+
+        // Setup SurfaceView
+        // -----------------
+//        mySurfaceView = (SurfaceView) this.getActivity().findViewById(R.id.camera_view);
+//
+//        // Init QREader
+//        // ------------
+//        qrEader = new QREader.Builder(this, mySurfaceView, new QRDataListener() {
+//            @Override
+//            public void onDetected(final String data) {
+//                Log.d("QREader", "Value : " + data);
+//               text.post(data);
+//            }
+//        }).facing(QREader.BACK_CAM)
+//                .enableAutofocus(true)
+//                .height(mySurfaceView.getHeight())
+//                .width(mySurfaceView.getWidth())
+//                .build();
         return view;
     }
 
-//
 
     /** Check if this device has a camera */
     public boolean checkCameraHardware(Context context) {

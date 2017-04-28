@@ -3,7 +3,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context="layout.message"
-
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
 
@@ -51,7 +50,7 @@
         android:drawableLeft="@mipmap/send"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/editText2"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         />
 
     </RelativeLayout>
