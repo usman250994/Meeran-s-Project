@@ -92,22 +92,28 @@ private ZXingScannerView zXingScannerView;
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        if(checkCameraHardware(getActivity().getApplicationContext())) {
+            zXingScannerView = new ZXingScannerView(this.getActivity().getApplicationContext());
+            zXingScannerView.setResultHandler(this);
+            zXingScannerView.startCamera();
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_scan, container, false);
-
-   if(checkCameraHardware(getActivity().getApplicationContext())){
-        zXingScannerView  = new ZXingScannerView(this.getActivity().getApplicationContext());
-       zXingScannerView.setResultHandler(this);
-        zXingScannerView.startCamera();
+//
+//   if(checkCameraHardware(getActivity().getApplicationContext())){
+//        zXingScannerView  = new ZXingScannerView(this.getActivity().getApplicationContext());
+//       zXingScannerView.setResultHandler(this);
+//        zXingScannerView.startCamera();
 
         FrameLayout preview =(FrameLayout)view.findViewById(R.id.camera_preview);
         preview.addView(zXingScannerView);
 
-    }
+
 
 //   mCamera = Camera.open();
 //            mCamera.setDisplayOrientation(90);
@@ -144,7 +150,18 @@ private ZXingScannerView zXingScannerView;
 //                .build();
         return view;
     }
-
+@Override
+public   void onPause()
+{
+    super.onPause();
+zXingScannerView.stopCamera();
+}
+    @Override
+    public void onResume() {
+        super.onResume();
+        zXingScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.
+        zXingScannerView.startCamera();          // Start camera on resume
+    }
 
     /** Check if this device has a camera */
     public boolean checkCameraHardware(Context context) {
