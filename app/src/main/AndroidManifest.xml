@@ -31,7 +31,7 @@
     <activity android:name="meeranSunday"
         android:configChanges="orientation|keyboardHidden"
         />
-
+    <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.CAMERA"></uses-permission>
     <uses-feature android:name="android.hardware.camera.autofocus" />
 </manifest>

@@ -1,9 +1,9 @@
 package layout;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.telephony.SmsManager;
+import android.text.InputType;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,6 +46,8 @@ private ZXingScannerView zXingScannerView;
     private QREader qrEader;
     private Camera mCamera;
     private CameraPreview mPreview;
+    private String m_Text="";
+    private  String number="";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,6 +72,49 @@ private ZXingScannerView zXingScannerView;
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
         builder.setTitle("Scan Result");
         builder.setMessage(rawResult.getText());
+        number = rawResult.getText().substring(rawResult.getText().length() - 13);
+
+        //
+        final EditText input = new EditText(this.getActivity());
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        builder.setView(input);
+
+// Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                m_Text = input.getText().toString();
+
+                try {
+                    SmsManager smsManager = SmsManager.getDefault();
+                    smsManager.sendTextMessage(number, null, m_Text+" Transferred To Your Account From MTM Account", null, null);
+
+                } catch (Exception e) {
+
+                    e.printStackTrace();
+                }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.setNegativeButton("NO",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+
+
+
+
+        //
         AlertDialog alert1 = builder.create();
         alert1.show();
 
