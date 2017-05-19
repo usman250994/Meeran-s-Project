@@ -7,8 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.hardware.Camera;
+import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -48,9 +51,6 @@ public  int check=0;
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -64,41 +64,39 @@ public  int check=0;
         message frags = new message();
         fragmentTransaction.add(R.id.content_main,frags,"text");
         fragmentTransaction.commit();
-
-check+=1;
+        getWindow().setFormat(PixelFormat.TRANSLUCENT);
+        check+=1;
     }
+    public void message(View v)
+    {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
 
-
-public void message(View v)
-{
-    FragmentManager fragmentManager = getFragmentManager();
-    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-    message sms = new message();
-    scan scan = new scan();
-    if(fragmentManager.findFragmentByTag("scan")!=null) {
-        fragmentTransaction.replace(fragmentManager.findFragmentByTag("scan").getId(), sms, "text");
-        fragmentTransaction.commit();
-    }
-}
+        message sms = new message();
+fragmentTransaction.replace(R.id.content_main,sms,"text");
+fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
 
     public void scan(View v)
     {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        message sms = new message();
-        scan scan = new scan();
-        if(fragmentManager.findFragmentByTag("text")!=null) {
-            fragmentTransaction.replace(fragmentManager.findFragmentByTag("text").getId(), scan, "scan");
-            fragmentTransaction.commit();
-        }
-    }
 
+        scan scan = new scan();
+
+
+            fragmentTransaction.replace(R.id.content_main, scan, "scan");
+        fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+
+
+    }
 public void loadooncreate(){
     setContentView(R.layout.activity_main);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
-
 
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -153,7 +151,8 @@ public void loadooncreate(){
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-            if(fragmentManager.findFragmentByTag("first")!=null) {
+            if(fragmentManager.findFragmentByTag("first")!=null)
+            {
 
                 fragmentTransaction.remove(fragmentManager.findFragmentByTag("first"));
                 fragmentTransaction.commit();
