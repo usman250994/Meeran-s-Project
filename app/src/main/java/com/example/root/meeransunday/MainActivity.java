@@ -222,9 +222,11 @@ public void loadooncreate(){
 loadooncreate();
 
         }
+
+
+
         return super.onOptionsItemSelected(item);
     }
-
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -243,7 +245,8 @@ loadooncreate();
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-
+            Intent intent = new Intent(this, LoginActivity.class);
+startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

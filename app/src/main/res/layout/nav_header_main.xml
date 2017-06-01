@@ -25,13 +25,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="Meeran's Application"
+        android:text="Money Through Mobile-MTM"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 s
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="meeran.studio@application.com"
+        android:text="visit mtm.com.pk For Dashboard!"
+
         android:id="@+id/textView" />
 
 </LinearLayout>

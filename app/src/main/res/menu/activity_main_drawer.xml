@@ -5,16 +5,16 @@
         <item
             android:id="@+id/nav_camera"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Hello Senior"
+            android:title="Generate QR"
             />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Add Option" />
+            android:title="Transacted QR's" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Some Thing" />
+            android:title="New Option" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
@@ -30,7 +30,10 @@
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Help" />
+                android:title="Log Out"
+
+
+                />
         </menu>
     </item>
 

@@ -10,26 +10,36 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="Planets">
-        <item>Sun Transferred pkr: 104 today</item>
-        <item>Mercury Transferred pkr: 200 today</item>
-        <item>Uranus Took pkr: 200 today</item>
-        <item>Neptune Took pkr: 100 today</item>
-        <item>Venus Transferred pkr: 639 today</item>
-        <item>Earth Transferred pkr: 200 Yesterday</item>
-        <item>Mars Transferred pkr: 945 yesterday</item>
-        <item>Jupiter Took pkr: 200 Yesterday</item>
-        <item>Saturn Took pkr: 400 Yesterday</item>
-        <item>Sun Transferred pkr: 104 today</item>
-        <item>Mercury Transferred pkr: 200 today</item>
-        <item>Uranus Took pkr: 200 today</item>
-        <item>Neptune Took pkr: 100 today</item>
-        <item>Venus Transferred pkr: 639 today</item>
-        <item>Earth Transferred pkr: 200 Yesterday</item>
-        <item>Mars Transferred pkr: 945 yesterday</item>
-        <item>Jupiter Took pkr: 200 Yesterday</item>
-        <item>Saturn Took pkr: 400 Yesterday</item>
+        <item>PKR: 104 Transferred to PSO</item>
+        <item>PKR: 987 Received From Ahmed</item>
+        <item>PKR: 224 Transferred to PSO</item>
+        <item>PKR: 331 Received From Shakeel</item>
+        <item>PKR: 231 Transferred to Sara</item>
+        <item>PKR: 343 Received From Pizza Hut</item>
+        <item>PKR: 004 Transferred to Abdul</item>
+        <item>PKR: 103 Received From Fahad</item>
+        <item>PKR: 104 Transferred to PSO</item>
+        <item>PKR: 104 Received From Dell Laptops</item>
+        <item>PKR: 104 Transferred to Fat Burger</item>
+        <item>PKR: 104 Received From Espresso</item>
+        <item>PKR: 104 Transferred to Club</item>
+
 
     </string-array>
+    <string name="title_activity_login"> Meerans Application</string>
 
-
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_up">Sign Up</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_signup">Meerans Application</string>
 </resources>

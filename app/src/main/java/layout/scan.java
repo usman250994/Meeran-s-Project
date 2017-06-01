@@ -45,13 +45,13 @@ public class scan extends Fragment implements ZXingScannerView.ResultHandler,Run
     @Override
     public void handleResult(Result rawResult) {
 
-
+        onPause();
         Log.e("handler", rawResult.getText()); // Prints scan results
         Log.e("handler", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode)
 
         // show the scanner result into dialog box.
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
-        builder.setTitle("Scan Result");
+        builder.setTitle("My Deatils");
         builder.setMessage(rawResult.getText());
         number = rawResult.getText().substring(rawResult.getText().length() - 13);
 
@@ -71,7 +71,7 @@ public class scan extends Fragment implements ZXingScannerView.ResultHandler,Run
 
                     SmsManager smsManager = SmsManager.getDefault();
                     smsManager.sendTextMessage(number, null, m_Text+" Transferred To Your Account From MTM Account", null, null);
-
+onResume();
                 }
                 catch (Exception e) {
 
@@ -84,6 +84,7 @@ public class scan extends Fragment implements ZXingScannerView.ResultHandler,Run
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                onResume();
             }
         });
 
@@ -93,11 +94,6 @@ public class scan extends Fragment implements ZXingScannerView.ResultHandler,Run
                         dialog.cancel();
                     }
                 });
-
-
-
-
-
         //
         AlertDialog alert1 = builder.create();
         alert1.show();
